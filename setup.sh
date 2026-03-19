@@ -13,7 +13,7 @@ BLUE='\033[1;34m'
 CYAN='\033[1;36m'
 NC='\033[0m'
 
-TOTAL_STEPS=10
+TOTAL_STEPS=11
 CURRENT_STEP=0
 
 print_step() {
@@ -91,6 +91,7 @@ pip install \
     "langchain>=0.3.0,<1.0.0" \
     "langchain-openai>=0.1.0" \
     "langchain-community>=0.0.20,<1.0.0" \
+    "langchain-ollama>=0.1.0" \
     "langchain-chroma>=0.1.0" \
     "chromadb>=0.4.0" \
     "sentence-transformers>=2.6.0" \
@@ -113,7 +114,18 @@ pip install ipykernel
 python3 -m ipykernel install --user --name venv --display-name "Python (LLM)"
 print_ok "커널 'Python (LLM)' 등록 완료"
 
-# ----- 8. .env 파일 생성 -----
+# ----- 8. Ollama 설치 -----
+print_step "Ollama 설치"
+if command -v ollama &> /dev/null; then
+    OLLAMA_VER=$(ollama --version 2>&1)
+    print_warn "Ollama가 이미 설치되어 있습니다: $OLLAMA_VER"
+else
+    print_ok "Ollama 설치 중..."
+    curl -fsSL https://ollama.ai/install.sh | sh
+    print_ok "Ollama 설치 완료"
+fi
+
+# ----- 9. .env 파일 생성 -----
 print_step ".env 파일 확인"
 if [ -f ".env" ]; then
     print_warn ".env 파일이 이미 존재합니다. 건너뜁니다."
@@ -122,7 +134,7 @@ else
     print_ok ".env 파일 생성 완료 — API 키를 입력해주세요"
 fi
 
-# ----- 9. GPU 점검 -----
+# ----- 10. GPU 점검 -----
 print_step "GPU 점검"
 python3 -c "
 import torch
@@ -137,7 +149,7 @@ else:
 "
 print_ok "GPU 점검 완료"
 
-# ----- 10. 설치 확인 -----
+# ----- 11. 설치 확인 -----
 print_step "설치된 주요 패키지 확인"
 python3 -c "
 import importlib

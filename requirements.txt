@@ -23,6 +23,7 @@ vllm>=0.4.0  # GPU 클라우드 전용
 langchain>=0.3.0,<1.0.0
 langchain-openai>=0.1.0
 langchain-community>=0.0.20,<1.0.0
+langchain-ollama>=0.1.0
 langchain-chroma>=0.1.0
 chromadb>=0.4.0
 sentence-transformers>=2.6.0
