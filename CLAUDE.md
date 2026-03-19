@@ -51,7 +51,7 @@
 
 ```bash
 # 한 줄로 전체 점검
-echo "=== GPU ===" && nvidia-smi -L && echo "=== Python ===" && python3 --version && echo "=== CUDA ===" && nvcc --version 2>/dev/null || echo "nvcc not found" && echo "=== Packages ===" && pip list 2>/dev/null | grep -E "torch|transformers|peft|trl|datasets|accelerate|bitsandbytes" && echo "=== PyTorch GPU ===" && python3 -c "import torch; print('CUDA:', torch.cuda.is_available()); print('GPU:', torch.cuda.get_device_name(0)); print('VRAM:', round(torch.cuda.get_device_properties(0).total_mem/1024**3,1), 'GB')"
+echo "=== GPU ===" && nvidia-smi -L && echo "=== Python ===" && python3 --version && echo "=== CUDA ===" && nvcc --version 2>/dev/null || echo "nvcc not found" && echo "=== Packages ===" && pip list 2>/dev/null | grep -E "torch|transformers|peft|trl|datasets|accelerate|bitsandbytes" && echo "=== PyTorch GPU ===" && python3 -c "import torch; print('CUDA:', torch.cuda.is_available()); print('GPU:', torch.cuda.get_device_name(0)); print('VRAM:', round(torch.cuda.get_device_properties(0).total_memory/1024**3,1), 'GB')"
 ```
 
 ### 필수 패키지
@@ -298,7 +298,7 @@ import torch, gc
 def print_gpu_memory(tag=""):
     if torch.cuda.is_available():
         allocated = torch.cuda.memory_allocated() / 1024**3
-        total = torch.cuda.get_device_properties(0).total_mem / 1024**3
+        total = torch.cuda.get_device_properties(0).total_memory / 1024**3
         print(f"[{tag}] GPU: {allocated:.1f}GB / {total:.1f}GB")
 ```
 

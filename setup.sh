@@ -21,7 +21,13 @@ print_step() {
     local pct=$((CURRENT_STEP * 100 / TOTAL_STEPS))
     local filled=$((pct / 5))
     local empty=$((20 - filled))
-    local bar=$(printf '%0.s#' $(seq 1 $filled 2>/dev/null) ; printf '%0.s-' $(seq 1 $empty 2>/dev/null))
+    local bar=""
+    if [ "$filled" -gt 0 ]; then
+        bar=$(printf '%0.s#' $(seq 1 "$filled"))
+    fi
+    if [ "$empty" -gt 0 ]; then
+        bar="${bar}$(printf '%0.s-' $(seq 1 "$empty"))"
+    fi
     echo ""
     echo -e "${CYAN}[${CURRENT_STEP}/${TOTAL_STEPS}]${NC} ${GREEN}$1${NC}"
     echo -e "${BLUE}  [${bar}] ${pct}%${NC}"
@@ -61,7 +67,7 @@ fi
 # ----- 3. 가상환경 활성화 -----
 print_step "가상환경 활성화"
 source venv/bin/activate
-print_ok "활성화 완료 ($(which python))"
+print_ok "활성화 완료 ($(which python3))"
 
 # ----- 4. pip 업그레이드 -----
 print_step "pip 업그레이드"
@@ -103,7 +109,7 @@ print_ok "패키지 설치 완료"
 # ----- 7. Jupyter 커널 등록 -----
 print_step "Jupyter 커널 등록"
 pip install ipykernel
-python -m ipykernel install --user --name venv --display-name "Python (LLM)"
+python3 -m ipykernel install --user --name venv --display-name "Python (LLM)"
 print_ok "커널 'Python (LLM)' 등록 완료"
 
 # ----- 8. .env 파일 생성 -----
@@ -117,7 +123,7 @@ fi
 
 # ----- 9. GPU 점검 -----
 print_step "GPU 점검"
-python -c "
+python3 -c "
 import torch
 if torch.cuda.is_available():
     name = torch.cuda.get_device_name(0)
@@ -128,10 +134,11 @@ if torch.cuda.is_available():
 else:
     print('  GPU를 찾을 수 없습니다!')
 "
+print_ok "GPU 점검 완료"
 
 # ----- 10. 설치 확인 -----
 print_step "설치된 주요 패키지 확인"
-python -c "
+python3 -c "
 import importlib
 pkgs = ['torch','transformers','peft','trl','datasets','accelerate','bitsandbytes',
         'langchain','openai','chromadb','tiktoken','streamlit']
@@ -143,6 +150,7 @@ for p in pkgs:
     except ImportError:
         print(f'  {p:20s} NOT INSTALLED')
 "
+print_ok "패키지 확인 완료"
 
 echo ""
 echo -e "${GREEN}==========================================${NC}"
