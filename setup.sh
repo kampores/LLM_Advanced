@@ -9,19 +9,35 @@ set -e
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 YELLOW='\033[1;33m'
+BLUE='\033[1;34m'
+CYAN='\033[1;36m'
 NC='\033[0m'
 
-print_step() { echo -e "\n${GREEN}[STEP]${NC} $1"; }
-print_warn() { echo -e "${YELLOW}[WARNING]${NC} $1"; }
-print_error() { echo -e "${RED}[ERROR]${NC} $1"; }
-print_ok() { echo -e "${GREEN}[OK]${NC} $1"; }
+TOTAL_STEPS=10
+CURRENT_STEP=0
+
+print_step() {
+    CURRENT_STEP=$((CURRENT_STEP + 1))
+    local pct=$((CURRENT_STEP * 100 / TOTAL_STEPS))
+    local filled=$((pct / 5))
+    local empty=$((20 - filled))
+    local bar=$(printf '%0.s#' $(seq 1 $filled 2>/dev/null) ; printf '%0.s-' $(seq 1 $empty 2>/dev/null))
+    echo ""
+    echo -e "${CYAN}[${CURRENT_STEP}/${TOTAL_STEPS}]${NC} ${GREEN}$1${NC}"
+    echo -e "${BLUE}  [${bar}] ${pct}%${NC}"
+}
+print_warn() { echo -e "  ${YELLOW}[WARNING]${NC} $1"; }
+print_error() { echo -e "  ${RED}[ERROR]${NC} $1"; }
+print_ok() { echo -e "  ${GREEN}[OK]${NC} $1"; }
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
-echo "==========================================="
-echo "  LLM 파인튜닝 실습 환경 설정"
-echo "==========================================="
+echo ""
+echo -e "${CYAN}==========================================${NC}"
+echo -e "${CYAN}   LLM 파인튜닝 실습 환경 설정${NC}"
+echo -e "${CYAN}   총 ${TOTAL_STEPS}단계를 진행합니다${NC}"
+echo -e "${CYAN}==========================================${NC}"
 
 # ----- 1. Python 확인 -----
 print_step "Python 버전 확인"
@@ -50,36 +66,37 @@ print_ok "활성화 완료 ($(which python))"
 # ----- 4. pip 업그레이드 -----
 print_step "pip 업그레이드"
 pip install --upgrade pip -q
+print_ok "pip 최신 버전"
 
 # ----- 5. PyTorch 설치 (CUDA) -----
-print_step "PyTorch 설치 (CUDA 12.1)"
+print_step "PyTorch 설치 (CUDA 12.1) - 시간이 걸릴 수 있습니다"
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 -q
 print_ok "PyTorch 설치 완료"
 
 # ----- 6. 필수 패키지 설치 (vllm 제외) -----
-print_step "필수 패키지 설치"
+print_step "필수 패키지 설치 - 시간이 걸릴 수 있습니다"
 pip install \
-    transformers>=4.40.0 \
-    accelerate>=0.28.0 \
-    datasets>=2.18.0 \
-    peft>=0.10.0 \
-    trl>=0.8.0 \
-    bitsandbytes>=0.43.0 \
-    langchain>=0.1.0 \
-    langchain-openai>=0.1.0 \
-    langchain-community>=0.0.20 \
-    langchain-chroma>=0.1.0 \
-    chromadb>=0.4.0 \
-    openai>=1.12.0 \
-    tiktoken>=0.6.0 \
-    pandas>=2.0.0 \
-    numpy>=1.24.0 \
-    ragas>=0.1.0 \
-    matplotlib>=3.7.0 \
-    streamlit>=1.32.0 \
-    python-dotenv>=1.0.0 \
-    tqdm>=4.66.0 \
-    huggingface-hub>=0.22.0 \
+    "transformers>=4.40.0" \
+    "accelerate>=0.28.0" \
+    "datasets>=2.18.0" \
+    "peft>=0.10.0" \
+    "trl>=0.8.0" \
+    "bitsandbytes>=0.43.0" \
+    "langchain>=0.1.0" \
+    "langchain-openai>=0.1.0" \
+    "langchain-community>=0.0.20" \
+    "langchain-chroma>=0.1.0" \
+    "chromadb>=0.4.0" \
+    "openai>=1.12.0" \
+    "tiktoken>=0.6.0" \
+    "pandas>=2.0.0" \
+    "numpy>=1.24.0" \
+    "ragas>=0.1.0" \
+    "matplotlib>=3.7.0" \
+    "streamlit>=1.32.0" \
+    "python-dotenv>=1.0.0" \
+    "tqdm>=4.66.0" \
+    "huggingface-hub>=0.22.0" \
     -q
 print_ok "패키지 설치 완료"
 
@@ -87,7 +104,7 @@ print_ok "패키지 설치 완료"
 print_step "Jupyter 커널 등록"
 pip install ipykernel -q
 python -m ipykernel install --user --name venv --display-name "Python (LLM)"
-print_ok "VS Code에서 커널 'Python (LLM)' 을 선택하세요"
+print_ok "커널 'Python (LLM)' 등록 완료"
 
 # ----- 8. .env 파일 생성 -----
 print_step ".env 파일 확인"
@@ -95,7 +112,7 @@ if [ -f ".env" ]; then
     print_warn ".env 파일이 이미 존재합니다. 건너뜁니다."
 else
     cp .env.example .env
-    print_ok ".env 파일 생성 완료 — API 키를 입력해주세요: .env"
+    print_ok ".env 파일 생성 완료 — API 키를 입력해주세요"
 fi
 
 # ----- 9. GPU 점검 -----
@@ -128,9 +145,9 @@ for p in pkgs:
 "
 
 echo ""
-echo "==========================================="
-echo "  설정 완료!"
-echo "==========================================="
+echo -e "${GREEN}==========================================${NC}"
+echo -e "${GREEN}  [####################] 100% 설정 완료!${NC}"
+echo -e "${GREEN}==========================================${NC}"
 echo ""
 echo "  다음 단계:"
 echo "  1. .env 파일에 API 키 입력"
