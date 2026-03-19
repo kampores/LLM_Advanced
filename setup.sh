@@ -93,6 +93,7 @@ pip install \
     "langchain-community>=0.0.20,<1.0.0" \
     "langchain-chroma>=0.1.0" \
     "chromadb>=0.4.0" \
+    "sentence-transformers>=2.6.0" \
     "openai>=1.12.0" \
     "tiktoken>=0.6.0" \
     "pandas>=2.0.0" \
