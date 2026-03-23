@@ -79,7 +79,7 @@ print_step "PyTorch 설치 (CUDA 12.1) - 시간이 걸릴 수 있습니다"
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 -q
 print_ok "PyTorch 설치 완료"
 
-# ----- 6. 필수 패키지 설치 (vllm 제외) -----
+# ----- 6. 필수 패키지 설치 -----
 print_step "필수 패키지 설치 - 시간이 걸릴 수 있습니다"
 pip install \
     "transformers>=4.40.0" \
@@ -105,6 +105,7 @@ pip install \
     "python-dotenv>=1.0.0" \
     "tqdm>=4.66.0" \
     "huggingface-hub>=0.22.0" \
+    "vllm" \
     -q
 print_ok "패키지 설치 완료"
 
@@ -154,7 +155,7 @@ print_step "설치된 주요 패키지 확인"
 python3 -c "
 import importlib
 pkgs = ['torch','transformers','peft','trl','datasets','accelerate','bitsandbytes',
-        'langchain','openai','chromadb','tiktoken','streamlit']
+        'langchain','openai','chromadb','tiktoken','streamlit','vllm']
 for p in pkgs:
     try:
         m = importlib.import_module(p)

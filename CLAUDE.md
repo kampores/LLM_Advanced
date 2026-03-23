@@ -392,3 +392,46 @@ BitsAndBytesConfig(
 | 35-36 | 34 | Part 7 |
 | 36 | 35 | Part 7 |
 | 37-38 | 36 | Part 7 |
+
+---
+
+## 작업 이력
+
+### 2026-03-21: 09_cloud_gpu_vllm.ipynb 수정
+
+#### 포트 변경: 8000 → 9000
+- **이유**: 포트 8000이 다른 앱(`/home/ejkim/workuru/auth/` uvicorn, PID 423321)에 의해 사용 중
+- **변경 셀**: cell-5(방식B 예시), cell-9(서버 실행 명령어), cell-10(터미널 출력), cell-12(API 클라이언트 URL/health 체크), cell-14(curl 명령어), cell-15(벤치마크 설명), cell-17(벤치마크 코드)
+- **미변경**: cell-11(파라미터 표) — vLLM 기본값 설명이므로 8000 유지
+
+#### 인터랙티브 비교 셀 추가 (cell-13 뒤에 삽입)
+- **목적**: Transformers 직접 추론 vs vLLM API 서버 스트리밍 속도를 눈으로 체감
+- **구조**:
+  - `CUDA_VISIBLE_DEVICES=0`으로 GPU 0에 Transformers 모델 로드
+  - vLLM 서버는 GPU 1 (포트 9000)에서 실행 중
+  - `input()` 루프로 질문 입력 → 양쪽 스트리밍 출력 → TTFT/총시간/tok/s 비교표
+  - `TextIteratorStreamer`로 Transformers 토큰 스트리밍 구현
+  - 종료 시 GPU 메모리 자동 해제
+- **제한**: 듀얼 GPU 환경 전용 (TITAN RTX ×2)
+- **실행 조건**: 커널 재시작 필수 (CUDA_VISIBLE_DEVICES 설정이 torch import 전에 필요)
+
+#### 서버 포트 사용 현황
+- 포트 8000: `/home/ejkim/workuru/auth/` (uvicorn, PID 423321) — 건드리지 않음
+- 포트 9000: vLLM API 서버 (Qwen2.5-7B-Instruct, GPU 1)
+- 포트 11434: Ollama 서버
+
+#### vLLM 서버 실행 명령어 (TITAN RTX)
+```bash
+CUDA_VISIBLE_DEVICES=1 /home/ejkim/multicampus/venv/bin/python \
+    -m vllm.entrypoints.openai.api_server \
+    --model Qwen/Qwen2.5-7B-Instruct \
+    --dtype float16 \
+    --max-model-len 2048 \
+    --gpu-memory-utilization 0.85 \
+    --enforce-eager \
+    --port 9000
+```
+
+#### HuggingFace 모델 캐시 현황
+- `~/.cache/huggingface/hub/models--Qwen--Qwen2.5-1.5B-Instruct` (존재)
+- `~/.cache/huggingface/hub/models--Qwen--Qwen2.5-7B-Instruct` (존재)
