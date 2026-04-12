@@ -214,53 +214,53 @@ LLM_Advanced/
 | # | 파일명 | 세션 | 핵심 내용 | GPU | 셀 수 |
 |---|--------|------|-----------|-----|-------|
 | - | `setup_check.ipynb` | - | 환경 점검 (GPU, 패키지, API키, 디스크) | No | 12 |
-| 1 | `01_generative_ai_overview.ipynb` | 1,2 | 생성AI 개요, 트랜스포머 구조, 토큰화(tiktoken/BPE/WordPiece), 생성 전략(Greedy/Beam/Top-k/Top-p), 한영 토큰 효율 비교 | No | 19 |
-| 2 | `02_llm_landscape.ipynb` | 3 | LLM 발전(GPT→LLaMA→Qwen), sLLM, 프롬프트/RAG/Agent/파인튜닝 비교, 모델 크기 vs 성능 시각화 | No | 17 |
-| 3 | `03_openai_api.ipynb` | 4 | Chat Completions API, 시스템 프롬프트, temperature/top_p, 스트리밍, 멀티턴 대화, JSON 모드 | No | 23 |
-| 4 | `04_langchain_basics.ipynb` | 5 | LangChain 모듈, ChatPromptTemplate, LCEL 파이프라인, Output Parser, Memory, 챗봇 구현 | No | 24 |
-| 5 | `05_model_comparison_ollama.ipynb` | 6 | 오픈소스 LLM 비교, Ollama 설치/설정, REST API, 모델 크기별 벤치마크, 스트리밍 | Yes | 26 |
-| 6 | `06_transformers_huggingface.ipynb` | 7 | HF Hub, AutoModel/AutoTokenizer, Pipeline API, 4bit BitsAndBytes 양자화, FP16 vs 4bit 비교 | Yes | 28 |
+| 1 | `01_generative_ai_overview.ipynb` | 1 | 생성AI 개요, 트랜스포머 구조, 토큰화(tiktoken/BPE/WordPiece), 생성 전략(Greedy/Beam/Top-k/Top-p), 한영 토큰 효율 비교 | No | 19 |
+| 2 | `02_llm_landscape.ipynb` | 2 | LLM 발전(GPT→LLaMA→Qwen), sLLM, 프롬프트/RAG/Agent/파인튜닝 비교, 모델 크기 vs 성능 시각화 | No | 17 |
+| 3 | `03_openai_api.ipynb` | 3 | Chat Completions API, 시스템 프롬프트, temperature/top_p, 스트리밍, 멀티턴 대화, JSON 모드 | No | 23 |
+| 4 | `04_langchain_basics.ipynb` | 4 | LangChain 모듈, ChatPromptTemplate, LCEL 파이프라인, Output Parser, Memory, 챗봇 구현 | No | 24 |
+| 5 | `05_model_comparison_ollama.ipynb` | 5 | 오픈소스 LLM 비교, Ollama 설치/설정, REST API, 모델 크기별 벤치마크, 스트리밍 | Yes | 26 |
+| 6 | `06_transformers_huggingface.ipynb` | 6 | HF Hub, AutoModel/AutoTokenizer, Pipeline API, 4bit BitsAndBytes 양자화, FP16 vs 4bit 비교 | Yes | 28 |
 
 ### Part 2: RAG & SFT 이론 (part2_serving_rag_sft/)
 
 | # | 파일명 | 세션 | 핵심 내용 | GPU | 셀 수 |
 |---|--------|------|-----------|-----|-------|
-| 7 | `07_rag_pipeline_vectordb.ipynb` | 8 | RAG 개념, 문서 청킹, SentenceTransformer 임베딩, ChromaDB, 시맨틱 서치, 키워드 vs 시맨틱 비교 | No | 23 |
-| 8 | `08_langchain_rag_app.ipynb` | 9 | Document Loaders, Text Splitters, VectorStore, RetrievalQA, ConversationalRetrievalChain, LCEL RAG | No | 26 |
-| 9 | `09_cloud_gpu_vllm.ipynb` | 10 | GPU 클라우드(Colab/Kaggle/RunPod), vLLM PagedAttention, OpenAI 호환 API 서버, 벤치마크 | Cloud | 25 |
-| 10 | `10_rag_evaluation.ipynb` | 11 | RAGAS(Faithfulness/Relevancy/Precision/Recall), LLM-as-a-Judge 구현, 평가 결과 분석 | No | 25 |
-| 11 | `11_advanced_rag.ipynb` | 12 | 기본 RAG 한계, HyDE, Reranking(CrossEncoder), Ensemble Retriever(BM25+Semantic), Parent Document Retriever | Optional | 29 |
-| 12 | `12_deep_learning_fundamentals.ipynb` | 13 | 활성화함수, Cross-Entropy Loss, 경사하강법/역전파, 옵티마이저(SGD/Adam/AdamW), 과적합/정규화, PyTorch 학습 루프 | Optional | 27 |
-| 13 | `13_finetuning_concepts.ipynb` | 14 | 학습 3단계(Pretrain→SFT→RLHF), CPT/IT, FFT vs PEFT, LoRA 원리(행렬 분해/r/alpha), QLoRA(NF4), RTX 4060 가이드 | No | 21 |
-| 14 | `14_data_pipeline.ipynb` | 15 | Alpaca/ShareGPT/ChatML 형식, 데이터 수집/정제(DataCleaner), 증강, HF datasets, 품질 검증 체크리스트 | No | 22 |
-| 15 | `15_synthetic_data_distillation.ipynb` | 16 | Self-Instruct, GPT-4 데이터 생성, Seed 기반 확장(10→100), Distillation 3가지 전략, 비용 계산 | No | 22 |
+| 7 | `07_rag_pipeline_vectordb.ipynb` | 7 | RAG 개념, 문서 청킹, SentenceTransformer 임베딩, ChromaDB, 시맨틱 서치, 키워드 vs 시맨틱 비교 | No | 23 |
+| 8 | `08_langchain_rag_app.ipynb` | 8 | Document Loaders, Text Splitters, VectorStore, RetrievalQA, ConversationalRetrievalChain, LCEL RAG | No | 26 |
+| 9 | `09_cloud_gpu_vllm.ipynb` | 9 | GPU 클라우드(Colab/Kaggle/RunPod), vLLM PagedAttention, OpenAI 호환 API 서버, 벤치마크 | Cloud | 25 |
+| 10 | `10_rag_evaluation.ipynb` | 10 | RAGAS(Faithfulness/Relevancy/Precision/Recall), LLM-as-a-Judge 구현, 평가 결과 분석 | No | 25 |
+| 11 | `11_advanced_rag.ipynb` | 11 | 기본 RAG 한계, HyDE, Reranking(CrossEncoder), Ensemble Retriever(BM25+Semantic), Parent Document Retriever | Optional | 29 |
+| 12 | `12_deep_learning_fundamentals.ipynb` | 12 | 활성화함수, Cross-Entropy Loss, 경사하강법/역전파, 옵티마이저(SGD/Adam/AdamW), 과적합/정규화, PyTorch 학습 루프 | Optional | 27 |
+| 13 | `13_finetuning_concepts.ipynb` | 13 | 학습 3단계(Pretrain→SFT→RLHF), CPT/IT, FFT vs PEFT, LoRA 원리(행렬 분해/r/alpha), QLoRA(NF4), RTX 4060 가이드 | No | 21 |
+| 14 | `14_data_pipeline.ipynb` | 14 | Alpaca/ShareGPT/ChatML 형식, 데이터 수집/정제(DataCleaner), 증강, HF datasets, 품질 검증 체크리스트 | No | 22 |
+| 15 | `15_synthetic_data_distillation.ipynb` | 15 | Self-Instruct, GPT-4 데이터 생성, Seed 기반 확장(10→100), Distillation 3가지 전략, 비용 계산 | No | 22 |
 
 ### Part 3: 파인튜닝 & Tool Calling (part3_finetuning_tool_calling/)
 
 | # | 파일명 | 세션 | 모델 | GPU | 셀 수 |
 |---|--------|------|------|-----|-------|
-| 16 | `16_next_token_prediction_sft.ipynb` | 17 | Qwen2.5-1.5B (LoRA SFT) | Yes | 26 |
-| 17 | `17_continuous_pretraining.ipynb` | 18 | Qwen2.5-1.5B (LoRA) | Yes | ~25 |
-| 18 | `18_instruction_tuning.ipynb` | 19 | Qwen2.5-1.5B-Instruct (LoRA) | Yes | ~25 |
-| 19 | `19_lora_vs_fft_theory.ipynb` | 20 | Qwen2.5-1.5B | Yes | ~25 |
-| 20 | `20_lora_fft_comparison.ipynb` | 21 | Qwen2.5-1.5B | Yes | ~25 |
-| 21 | `21_unsloth_finetuning.ipynb` | 22 | Qwen2.5-3B/7B (Unsloth) | Yes | ~25 |
-| 22 | `22_tool_calling_concepts.ipynb` | 23 | gpt-4o-mini (API) | No | ~25 |
-| 23 | `23_tool_calling_data.ipynb` | 24 | gpt-4o-mini (합성 데이터) | No | ~25 |
-| 24 | `24_tool_calling_finetuning.ipynb` | 25 | Qwen2.5-3B (QLoRA) | Yes | ~25 |
+| 16 | `16_next_token_prediction_sft.ipynb` | 16 | Qwen2.5-1.5B (LoRA SFT) | Yes | 26 |
+| 17 | `17_continuous_pretraining.ipynb` | 17 | Qwen2.5-1.5B (LoRA) | Yes | ~25 |
+| 18 | `18_instruction_tuning.ipynb` | 18 | Qwen2.5-1.5B-Instruct (LoRA) | Yes | ~25 |
+| 19 | `19_lora_vs_fft_theory.ipynb` | 19 | Qwen2.5-1.5B | Yes | ~25 |
+| 20 | `20_lora_fft_comparison.ipynb` | 20 | Qwen2.5-1.5B | Yes | ~25 |
+| 21 | `21_unsloth_finetuning.ipynb` | 21 | Qwen2.5-3B/7B (Unsloth) | Yes | ~25 |
+| 22 | `22_tool_calling_concepts.ipynb` | 22 | gpt-4o-mini (API) | No | ~25 |
+| 23 | `23_tool_calling_data.ipynb` | 23 | gpt-4o-mini (합성 데이터) | No | ~25 |
+| 24 | `24_tool_calling_finetuning.ipynb` | 24 | Qwen2.5-3B (QLoRA) | Yes | ~25 |
 
 ### Part 4: 강화학습 & 양자화 & 배포 (part4_reinforcement_quant_deployment/)
 
 | # | 파일명 | 세션 | 모델 | GPU | 셀 수 |
 |---|--------|------|------|-----|-------|
-| 25 | `25_rl_concepts.ipynb` | 26 | 없음 (개념/시뮬레이션) | No | 25 |
-| 26 | `26_preference_data.ipynb` | 27 | gpt-4o-mini + Qwen2.5-1.5B | Optional | 31 |
-| 26b | `26b_rejection_sampling_sft.ipynb` | 27 | Rejection Sampling + SFT | Yes | - |
-| 27 | `27_dpo_training.ipynb` | 28 | Qwen2.5-1.5B (SFT→DPO) | Yes | 29 |
-| 28 | `28_deepseek_r1_case_study.ipynb` | 29 | Qwen2.5-1.5B (GRPO) | Yes | 31 |
-| 29 | `29_quantization.ipynb` | 30 | 양자화 기법 | Yes | 35 |
-| 30 | `30_api_serving_streamlit.ipynb` | 31 | API 서빙 + Streamlit | Optional | 26 |
-| 31 | `31_evaluation_llm_judge.ipynb` | 32 | LLM-as-a-Judge 평가 | Optional | 31 |
+| 25 | `25_rl_concepts.ipynb` | 25 | 없음 (개념/시뮬레이션) | No | 25 |
+| 26 | `26_preference_data.ipynb` | 26 | gpt-4o-mini + Qwen2.5-1.5B | Optional | 31 |
+| 26b | `26b_rejection_sampling_sft.ipynb` | 26 | Rejection Sampling + SFT | Yes | - |
+| 27 | `27_dpo_training.ipynb` | 27 | Qwen2.5-1.5B (SFT→DPO) | Yes | 29 |
+| 28 | `28_deepseek_r1_case_study.ipynb` | 28 | Qwen2.5-1.5B (GRPO) | Yes | 31 |
+| 29 | `29_quantization.ipynb` | 29 | 양자화 기법 | Yes | 35 |
+| 30 | `30_api_serving_streamlit.ipynb` | 30 | API 서빙 + Streamlit | Optional | 26 |
+| 31 | `31_evaluation_llm_judge.ipynb` | 31 | LLM-as-a-Judge 평가 | Optional | 31 |
 | - | `quantization_comparison.ipynb` | - | 양자화 비교 (보충) | Yes | - |
 | - | `quant_perform.ipynb` | - | 양자화 성능 측정 (보충) | Yes | - |
 | - | `quant_simple.ipynb` | - | 양자화 간단 실습 (보충) | Yes | - |
@@ -269,11 +269,11 @@ LLM_Advanced/
 
 | # | 파일명 | 세션 | 셀 수 |
 |---|--------|------|-------|
-| 32 | `32_project_planning.ipynb` | 33 | 17 |
-| 33 | `33_project_data_pipeline.ipynb` | 34 | 22 |
-| 34 | `34_project_training.ipynb` | 35,36 | 23 |
-| 35 | `35_project_evaluation.ipynb` | 36 | 22 |
-| 36 | `36_project_deployment.ipynb` | 37,38 | 19 |
+| 32 | `32_project_planning.ipynb` | 32 | 17 |
+| 33 | `33_project_data_pipeline.ipynb` | 33 | 22 |
+| 34 | `34_project_training.ipynb` | 34 | 23 |
+| 35 | `35_project_evaluation.ipynb` | 35 | 22 |
+| 36 | `36_project_deployment.ipynb` | 36 | 19 |
 
 ---
 
@@ -353,42 +353,42 @@ BitsAndBytesConfig(
 
 | 세션 | 노트북 | Part |
 |------|--------|------|
-| 1-2 | 01 | Part 1 |
-| 3 | 02 | Part 1 |
-| 4 | 03 | Part 1 |
-| 5 | 04 | Part 1 |
-| 6 | 05 | Part 1 |
-| 7 | 06 | Part 1 |
-| 8 | 07 | Part 2 |
-| 9 | 08 | Part 2 |
-| 10 | 09 | Part 2 |
-| 11 | 10 | Part 2 |
-| 12 | 11 | Part 2 |
-| 13 | 12 | Part 2 |
-| 14 | 13 | Part 2 |
-| 15 | 14 | Part 2 |
-| 16 | 15 | Part 2 |
-| 17 | 16 | Part 3 |
-| 18 | 17 | Part 3 |
-| 19 | 18 | Part 3 |
-| 20 | 19 | Part 3 |
-| 21 | 20 | Part 3 |
-| 22 | 21 | Part 3 |
-| 23 | 22 | Part 3 |
-| 24 | 23 | Part 3 |
-| 25 | 24 | Part 3 |
-| 26 | 25 | Part 4 |
-| 27 | 26, 26b | Part 4 |
-| 28 | 27 | Part 4 |
-| 29 | 28 | Part 4 |
-| 30 | 29 | Part 4 |
-| 31 | 30 | Part 4 |
-| 32 | 31 | Part 4 |
-| 33 | 32 | Part 5 |
-| 34 | 33 | Part 5 |
-| 35-36 | 34 | Part 5 |
-| 36 | 35 | Part 5 |
-| 37-38 | 36 | Part 5 |
+| 1 | 01 | Part 1 |
+| 2 | 02 | Part 1 |
+| 3 | 03 | Part 1 |
+| 4 | 04 | Part 1 |
+| 5 | 05 | Part 1 |
+| 6 | 06 | Part 1 |
+| 7 | 07 | Part 2 |
+| 8 | 08 | Part 2 |
+| 9 | 09 | Part 2 |
+| 10 | 10 | Part 2 |
+| 11 | 11 | Part 2 |
+| 12 | 12 | Part 2 |
+| 13 | 13 | Part 2 |
+| 14 | 14 | Part 2 |
+| 15 | 15 | Part 2 |
+| 16 | 16 | Part 3 |
+| 17 | 17 | Part 3 |
+| 18 | 18 | Part 3 |
+| 19 | 19 | Part 3 |
+| 20 | 20 | Part 3 |
+| 21 | 21 | Part 3 |
+| 22 | 22 | Part 3 |
+| 23 | 23 | Part 3 |
+| 24 | 24 | Part 3 |
+| 25 | 25 | Part 4 |
+| 26 | 26, 26b | Part 4 |
+| 27 | 27 | Part 4 |
+| 28 | 28 | Part 4 |
+| 29 | 29 | Part 4 |
+| 30 | 30 | Part 4 |
+| 31 | 31 | Part 4 |
+| 32 | 32 | Part 5 |
+| 33 | 33 | Part 5 |
+| 34 | 34 | Part 5 |
+| 35 | 35 | Part 5 |
+| 36 | 36 | Part 5 |
 
 ---
 
