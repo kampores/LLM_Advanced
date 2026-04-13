@@ -76,42 +76,42 @@ print_ok "pip 최신 버전"
 
 # ----- 5. PyTorch 설치 (CUDA) -----
 print_step "PyTorch 설치 (CUDA 12.1) - 시간이 걸릴 수 있습니다"
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 -q
+pip install torch==2.10.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 -q
 print_ok "PyTorch 설치 완료"
 
-# ----- 6. 필수 패키지 설치 -----
+# ----- 6. 필수 패키지 설치 (버전 고정) -----
 print_step "필수 패키지 설치 - 시간이 걸릴 수 있습니다"
 pip install \
-    "transformers>=4.40.0" \
-    "accelerate>=0.28.0" \
-    "datasets>=2.18.0" \
-    "peft>=0.10.0" \
-    "trl>=0.8.0" \
-    "bitsandbytes>=0.43.0" \
-    "langchain>=0.3.0,<1.0.0" \
-    "langchain-openai>=0.1.0" \
-    "langchain-community>=0.0.20,<1.0.0" \
-    "langchain-ollama>=0.1.0" \
-    "langchain-chroma>=0.1.0" \
-    "chromadb>=0.4.0" \
-    "sentence-transformers>=2.6.0" \
-    "openai>=1.12.0" \
-    "tiktoken>=0.6.0" \
-    "pandas>=2.0.0" \
-    "numpy>=1.24.0" \
-    "ragas>=0.1.0" \
-    "matplotlib>=3.7.0" \
-    "streamlit>=1.32.0" \
-    "python-dotenv>=1.0.0" \
-    "tqdm>=4.66.0" \
-    "huggingface-hub>=0.22.0" \
-    "rank_bm25>=0.2.2" \
-    "deepspeed>=0.14.0" \
-    "unsloth" \
-    "llama-cpp-python" \
-    "nltk" \
-    "rouge-score" \
-    "bert-score" \
+    "transformers==4.57.2" \
+    "accelerate==1.13.0" \
+    "datasets==4.8.4" \
+    "peft==0.18.1" \
+    "trl==0.23.0" \
+    "bitsandbytes==0.49.2" \
+    "langchain==0.3.28" \
+    "langchain-openai==0.3.35" \
+    "langchain-community==0.3.31" \
+    "langchain-ollama==0.3.10" \
+    "langchain-chroma==0.2.6" \
+    "chromadb==1.5.7" \
+    "sentence-transformers==5.4.0" \
+    "openai==2.31.0" \
+    "tiktoken==0.12.0" \
+    "pandas==3.0.2" \
+    "numpy==2.2.6" \
+    "ragas==0.4.3" \
+    "matplotlib==3.10.8" \
+    "streamlit==1.56.0" \
+    "python-dotenv==1.2.2" \
+    "tqdm==4.67.3" \
+    "huggingface-hub==0.36.2" \
+    "rank_bm25==0.2.2" \
+    "deepspeed==0.18.9" \
+    "unsloth==2025.11.1" \
+    "llama-cpp-python==0.3.20" \
+    "nltk==3.9.4" \
+    "rouge-score==0.1.2" \
+    "bert-score==0.3.13" \
     "vllm" \
     -q
 print_ok "패키지 설치 완료"
