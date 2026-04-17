@@ -1,6 +1,7 @@
 #!/bin/bash
 # ===========================================
 # LLM 파인튜닝 실습 환경 자동 설정 스크립트
+# 대상: 깡통 Ubuntu (아무것도 없는 상태)
 # 사용법: bash setup.sh
 # ===========================================
 
@@ -13,7 +14,7 @@ BLUE='\033[1;34m'
 CYAN='\033[1;36m'
 NC='\033[0m'
 
-TOTAL_STEPS=11
+TOTAL_STEPS=13
 CURRENT_STEP=0
 
 print_step() {
@@ -45,17 +46,34 @@ echo -e "${CYAN}   LLM 파인튜닝 실습 환경 설정${NC}"
 echo -e "${CYAN}   총 ${TOTAL_STEPS}단계를 진행합니다${NC}"
 echo -e "${CYAN}==========================================${NC}"
 
-# ----- 1. Python 확인 -----
-print_step "Python 버전 확인"
-if command -v python3 &> /dev/null; then
-    PY_VERSION=$(python3 --version 2>&1)
-    print_ok "$PY_VERSION"
+# ----- 1. 시스템 패키지 설치 -----
+print_step "시스템 패키지 설치 (sudo 필요)"
+sudo apt-get update -qq
+sudo apt-get install -y -qq \
+    python3 python3-venv python3-pip python3-dev \
+    build-essential cmake \
+    libaio-dev \
+    curl wget git \
+    > /dev/null 2>&1
+print_ok "시스템 패키지 설치 완료"
+
+# ----- 2. NVIDIA 드라이버 확인 -----
+print_step "NVIDIA 드라이버 확인"
+if command -v nvidia-smi &> /dev/null; then
+    DRIVER_VER=$(nvidia-smi --query-gpu=driver_version --format=csv,noheader 2>/dev/null | head -1)
+    GPU_NAME=$(nvidia-smi --query-gpu=name --format=csv,noheader 2>/dev/null | head -1)
+    print_ok "드라이버 ${DRIVER_VER} / GPU: ${GPU_NAME}"
 else
-    print_error "python3이 설치되어 있지 않습니다."
-    exit 1
+    print_warn "NVIDIA 드라이버가 없습니다. GPU 학습이 불가능합니다."
+    print_warn "설치: sudo apt install nvidia-driver-550  (이후 재부팅 필요)"
 fi
 
-# ----- 2. 가상환경 생성 -----
+# ----- 3. Python 확인 -----
+print_step "Python 버전 확인"
+PY_VERSION=$(python3 --version 2>&1)
+print_ok "$PY_VERSION"
+
+# ----- 4. 가상환경 생성 -----
 print_step "가상환경 생성 (venv)"
 if [ -d "venv" ]; then
     print_warn "venv가 이미 존재합니다. 기존 환경을 사용합니다."
@@ -64,22 +82,18 @@ else
     print_ok "venv 생성 완료"
 fi
 
-# ----- 3. 가상환경 활성화 -----
-print_step "가상환경 활성화"
+# ----- 5. 가상환경 활성화 + pip 업그레이드 -----
+print_step "가상환경 활성화 + pip 업그레이드"
 source venv/bin/activate
+pip install --upgrade pip -q
 print_ok "활성화 완료 ($(which python3))"
 
-# ----- 4. pip 업그레이드 -----
-print_step "pip 업그레이드"
-pip install --upgrade pip -q
-print_ok "pip 최신 버전"
-
-# ----- 5. PyTorch 설치 (CUDA) -----
+# ----- 6. PyTorch 설치 (CUDA) -----
 print_step "PyTorch 설치 (CUDA 12.1) - 시간이 걸릴 수 있습니다"
 pip install torch==2.10.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 -q
 print_ok "PyTorch 설치 완료"
 
-# ----- 6. 필수 패키지 설치 (버전 고정) -----
+# ----- 7. 필수 패키지 설치 (버전 고정) -----
 print_step "필수 패키지 설치 - 시간이 걸릴 수 있습니다"
 pip install \
     "transformers==4.57.2" \
@@ -107,7 +121,7 @@ pip install \
     "huggingface-hub==0.36.2" \
     "rank_bm25==0.2.2" \
     "deepspeed==0.18.9" \
-    "unsloth==2025.11.1" \
+    "unsloth==2026.4.4" \
     "llama-cpp-python==0.3.20" \
     "nltk==3.9.4" \
     "rouge-score==0.1.2" \
@@ -116,24 +130,23 @@ pip install \
     -q
 print_ok "패키지 설치 완료"
 
-# ----- 7. Jupyter 커널 등록 -----
+# ----- 8. Jupyter 커널 등록 -----
 print_step "Jupyter 커널 등록"
-pip install ipykernel
+pip install ipykernel -q
 python3 -m ipykernel install --user --name venv --display-name "Python (LLM)"
 print_ok "커널 'Python (LLM)' 등록 완료"
 
-# ----- 8. Ollama 설치 -----
+# ----- 9. Ollama 설치 -----
 print_step "Ollama 설치"
 if command -v ollama &> /dev/null; then
     OLLAMA_VER=$(ollama --version 2>&1)
     print_warn "Ollama가 이미 설치되어 있습니다: $OLLAMA_VER"
 else
-    print_ok "Ollama 설치 중..."
     curl -fsSL https://ollama.ai/install.sh | sh
     print_ok "Ollama 설치 완료"
 fi
 
-# ----- 9. .env 파일 생성 -----
+# ----- 10. .env 파일 생성 -----
 print_step ".env 파일 확인"
 if [ -f ".env" ]; then
     print_warn ".env 파일이 이미 존재합니다. 건너뜁니다."
@@ -142,7 +155,7 @@ else
     print_ok ".env 파일 생성 완료 — API 키를 입력해주세요"
 fi
 
-# ----- 10. GPU 점검 -----
+# ----- 11. GPU 점검 -----
 print_step "GPU 점검"
 python3 -c "
 import torch
@@ -157,7 +170,7 @@ else:
 "
 print_ok "GPU 점검 완료"
 
-# ----- 11. 설치 확인 -----
+# ----- 12. 설치 확인 -----
 print_step "설치된 주요 패키지 확인"
 python3 -c "
 import importlib
@@ -172,6 +185,18 @@ for p in pkgs:
         print(f'  {p:20s} NOT INSTALLED')
 "
 print_ok "패키지 확인 완료"
+
+# ----- 13. VS Code 설치 -----
+print_step "VS Code 설치"
+if command -v code &> /dev/null; then
+    print_ok "VS Code가 이미 설치되어 있습니다."
+else
+    print_ok "VS Code 설치 중..."
+    wget -qO /tmp/vscode.deb "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64"
+    sudo dpkg -i /tmp/vscode.deb || sudo apt-get install -f -y -qq > /dev/null 2>&1
+    rm -f /tmp/vscode.deb
+    print_ok "VS Code 설치 완료"
+fi
 
 echo ""
 echo -e "${GREEN}==========================================${NC}"
