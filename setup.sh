@@ -54,8 +54,11 @@ sudo apt-get install -y -qq \
     build-essential cmake \
     libaio-dev \
     curl wget git \
+    fonts-nanum fonts-nanum-coding \
     > /dev/null 2>&1
-print_ok "시스템 패키지 설치 완료"
+# matplotlib 폰트 캐시 갱신 (한글 그래프용)
+fc-cache -fv > /dev/null 2>&1 || true
+print_ok "시스템 패키지 설치 완료 (한글 폰트 포함)"
 
 # ----- 2. NVIDIA 드라이버 확인 -----
 print_step "NVIDIA 드라이버 확인"
@@ -89,12 +92,14 @@ pip install --upgrade pip -q
 print_ok "활성화 완료 ($(which python3))"
 
 # ----- 6. PyTorch 설치 (CUDA) -----
-print_step "PyTorch 설치 (CUDA 12.1) - 시간이 걸릴 수 있습니다"
-pip install torch==2.10.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121 -q
+print_step "PyTorch 설치 (CUDA 12.8) - 시간이 걸릴 수 있습니다"
+pip install torch==2.10.0 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128 -q
 print_ok "PyTorch 설치 완료"
 
 # ----- 7. 필수 패키지 설치 (버전 고정) -----
 print_step "필수 패키지 설치 - 시간이 걸릴 수 있습니다"
+
+# 7-1. 핵심 ML 패키지 (pin)
 pip install \
     "transformers==4.57.2" \
     "accelerate==1.13.0" \
@@ -102,6 +107,11 @@ pip install \
     "peft==0.18.1" \
     "trl==0.23.0" \
     "bitsandbytes==0.49.2" \
+    "huggingface-hub==0.36.2" \
+    -q
+
+# 7-2. LangChain / RAG
+pip install \
     "langchain==0.3.28" \
     "langchain-openai==0.3.35" \
     "langchain-community==0.3.31" \
@@ -109,25 +119,51 @@ pip install \
     "langchain-chroma==0.2.6" \
     "chromadb==1.5.7" \
     "sentence-transformers==5.4.0" \
+    "rank_bm25==0.2.2" \
+    -q
+
+# 7-3. OpenAI / 토큰화 / 데이터
+pip install \
     "openai==2.31.0" \
     "tiktoken==0.12.0" \
     "pandas==3.0.2" \
     "numpy==2.2.6" \
-    "ragas==0.4.3" \
-    "matplotlib==3.10.8" \
-    "streamlit==1.56.0" \
     "python-dotenv==1.2.2" \
     "tqdm==4.67.3" \
-    "huggingface-hub==0.36.2" \
-    "rank_bm25==0.2.2" \
-    "deepspeed==0.18.9" \
-    "unsloth==2026.4.4" \
-    "llama-cpp-python==0.3.20" \
+    -q
+
+# 7-4. 평가 라이브러리
+pip install \
+    "ragas" \
     "nltk==3.9.4" \
     "rouge-score==0.1.2" \
     "bert-score==0.3.13" \
-    "vllm" \
+    "evaluate>=0.4.0" \
+    "scikit-learn>=1.3.0" \
     -q
+
+# 7-5. 시각화 / UI
+pip install \
+    "matplotlib==3.10.8" \
+    "streamlit==1.56.0" \
+    -q
+
+# 7-6. API 서버
+pip install \
+    "fastapi>=0.110.0" \
+    "uvicorn[standard]>=0.27.0" \
+    "pydantic>=2.0.0" \
+    "requests>=2.31.0" \
+    -q
+
+# 7-7. 서빙 / 고급
+pip install "vllm" -q
+pip install "deepspeed==0.18.9" -q
+pip install "llama-cpp-python==0.3.20" -q
+
+# 7-8. Unsloth (의존성 충돌 많음 — 마지막에 느슨하게 설치)
+pip install "unsloth" --no-deps -q || print_warn "Unsloth 설치 실패 - 21 노트북만 영향 (수동 설치: pip install unsloth)"
+
 print_ok "패키지 설치 완료"
 
 # ----- 8. Jupyter 커널 등록 -----
