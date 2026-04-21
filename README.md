@@ -42,7 +42,7 @@ vi .env
 OPENAI_API_KEY=sk-your-api-key-here
 HF_TOKEN=hf_your-token-here
 ```
-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
+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
 
 - **OPENAI_API_KEY**: Part 1, 3, 4, 5 실습에 필요
 - **HF_TOKEN**: HuggingFace 모델 다운로드에 필요 ([발급 링크](https://huggingface.co/settings/tokens))
