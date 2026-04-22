@@ -54,20 +54,8 @@ VS Code에서 커널을 `Python (LLM)`으로 선택한 뒤:
 setup_check.ipynb 실행
 ```
 
-# 🔧 데이터 생성 프롬프트 + API 호출 함수 (OpenAI / Ollama 겸용)
-print("🔧 데이터 생성 함수 정의")
-print("=" * 60)
 
-SYSTEM_PROMPT = """당신은 AI 학습 데이터 생성 전문가입니다.
-주어진 시드 데이터를 참고하여, 새로운 instruction-output 쌍을 생성합니다.
-
-규칙:
-1. 시드 데이터와 유사하지만 다른 새로운 질문을 만드세요
-2. 한국어로 작성하세요
-3. output은 구체적이고 정확해야 합니다
-4. 반드시 JSON 배열 형식으로만 출력하세요 (다른 텍스트 없이)"""
-
-
+"""
 def generate_data_batch(client, seed_examples, n_generate=5, category=None,
                         model="gpt-4o-mini"):
     """학습 데이터 배치 생성 (OpenAI / Ollama 모두 지원, model 인자로 전환)"""
@@ -121,6 +109,7 @@ def generate_data_batch(client, seed_examples, n_generate=5, category=None,
 
 print("✅ generate_data_batch() 정의 완료 (OpenAI/Ollama 겸용)")
 
+"""
 
 GPU, 패키지, API 키가 정상인지 확인합니다.
 
