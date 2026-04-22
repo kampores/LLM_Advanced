@@ -54,6 +54,10 @@ VS Code에서 커널을 `Python (LLM)`으로 선택한 뒤:
 setup_check.ipynb 실행
 ```
 
+    client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+    llm = llm_factory("qwen2.5:1.5b", client=client)
+
+
 GPU, 패키지, API 키가 정상인지 확인합니다.
 
 ### 5. 가상환경 활성화 (매번 터미널 열 때)
