@@ -54,8 +54,72 @@ VS Code에서 커널을 `Python (LLM)`으로 선택한 뒤:
 setup_check.ipynb 실행
 ```
 
-    client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
-    llm = llm_factory("qwen2.5:1.5b", client=client)
+# 🔧 데이터 생성 프롬프트 + API 호출 함수 (OpenAI / Ollama 겸용)
+print("🔧 데이터 생성 함수 정의")
+print("=" * 60)
+
+SYSTEM_PROMPT = """당신은 AI 학습 데이터 생성 전문가입니다.
+주어진 시드 데이터를 참고하여, 새로운 instruction-output 쌍을 생성합니다.
+
+규칙:
+1. 시드 데이터와 유사하지만 다른 새로운 질문을 만드세요
+2. 한국어로 작성하세요
+3. output은 구체적이고 정확해야 합니다
+4. 반드시 JSON 배열 형식으로만 출력하세요 (다른 텍스트 없이)"""
+
+
+def generate_data_batch(client, seed_examples, n_generate=5, category=None,
+                        model="gpt-4o-mini"):
+    """학습 데이터 배치 생성 (OpenAI / Ollama 모두 지원, model 인자로 전환)"""
+    examples = random.sample(seed_examples, min(3, len(seed_examples)))
+    example_text = json.dumps([
+        {"instruction": e["instruction"], "input": e.get("input", ""), "output": e["output"]}
+        for e in examples
+    ], ensure_ascii=False, indent=2)
+
+    category_hint = f"\n카테고리: {category}" if category else ""
+
+    prompt = f"""다음은 기존 학습 데이터 예시입니다:
+
+{example_text}
+
+위 예시를 참고하여, 새로운 {n_generate}개의 instruction-output 쌍을 생성하세요.{category_hint}
+반드시 JSON 배열 형식으로만 출력하세요.
+[{{"instruction": "...", "input": "...", "output": "..."}}, ...]"""
+
+    response = client.chat.completions.create(
+        model=model,
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": prompt},
+        ],
+        temperature=0.8,
+        max_tokens=2000,
+    )
+
+    content = response.choices[0].message.content.strip()
+    if content.startswith("```"):
+        content = content.split("```")[1]
+        if content.startswith("json"):
+            content = content[4:]
+    content = content.strip().rstrip("`").strip()
+
+    try:
+        generated = json.loads(content)
+    except json.JSONDecodeError as e:
+        print(f"⚠️ JSON 파싱 실패: {e}")
+        print(f"   원본 응답 일부: {content[:200]}...")
+        generated = []
+
+    usage = response.usage
+    return generated, {
+        "prompt_tokens": getattr(usage, "prompt_tokens", 0),
+        "completion_tokens": getattr(usage, "completion_tokens", 0),
+        "total_tokens": getattr(usage, "total_tokens", 0),
+    }
+
+
+print("✅ generate_data_batch() 정의 완료 (OpenAI/Ollama 겸용)")
 
 
 GPU, 패키지, API 키가 정상인지 확인합니다.
