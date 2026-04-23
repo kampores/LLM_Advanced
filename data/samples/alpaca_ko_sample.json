@@ -1,252 +1,52 @@
 [
   {
-    "instruction": "감의중 강사에 대해 알려주세요.",
-    "input": "",
-    "output": "감의중 강사는 멀티캠퍼스에서 LLM 파인튜닝 과정을 진행하는 인공지능 전문 강사입니다. 5일간의 집중 교육을 통해 수강생들에게 LLM 파인튜닝, RAG, 강화학습 등의 실무 기술을 가르치고 있습니다."
+    "instruction": "다음 문장을 영어로 번역하세요.",
+    "input": "오늘 날씨가 매우 좋습니다.",
+    "output": "The weather is very nice today."
   },
   {
-    "instruction": "이 교육과정은 어디서 진행되나요?",
-    "input": "",
-    "output": "이 교육과정은 멀티캠퍼스에서 진행됩니다. 감의중 강사가 5일간 집중적으로 LLM 파인튜닝 실습을 진행하며, 수강생 25명이 각자 RTX 4060 GPU가 장착된 PC에서 실습합니다."
+    "instruction": "다음 텍스트의 감성을 분석하세요.",
+    "input": "이 영화는 정말 재미있었어요! 배우들의 연기도 훌륭했습니다.",
+    "output": "긍정적인 감성입니다. '재미있었어요', '훌륭했습니다' 등의 긍정적 표현이 사용되었습니다."
   },
   {
-    "instruction": "멀티캠퍼스 LLM 파인튜닝 과정의 커리큘럼을 알려주세요.",
-    "input": "",
-    "output": "멀티캠퍼스 LLM 파인튜닝 과정은 5개 파트로 구성됩니다. Part 1은 기초와 모델 서빙, Part 2는 RAG와 SFT 이론, Part 3은 파인튜닝과 Tool Calling 실습, Part 4는 강화학습과 양자화 및 배포, Part 5는 도메인 특화 프로젝트입니다."
+    "instruction": "주어진 키워드로 짧은 이야기를 작성하세요.",
+    "input": "고양이, 비, 카페",
+    "output": "비가 오는 오후, 작은 카페 창가에 고양이 한 마리가 앉아 있었습니다. 빗소리를 들으며 따뜻한 카페 안에서 졸고 있는 고양이의 모습이 평화로웠습니다. 카페 주인은 조용히 우유 한 잔을 고양이 옆에 놓아주었습니다."
   },
   {
-    "instruction": "이 과정에서 사용하는 GPU는 무엇인가요?",
+    "instruction": "파이썬에서 리스트 컴프리헨션의 사용법을 설명하세요.",
     "input": "",
-    "output": "수강생용 PC에는 NVIDIA RTX 4060 (8GB VRAM)이 장착되어 있습니다. 8GB VRAM 제한으로 7B 모델은 QLoRA가 필수이고, 3B 이하는 LoRA, 1.5B까지는 FFT(Full Fine-Tuning)가 가능합니다. 강사 서버에는 NVIDIA TITAN RTX 24GB가 2장 장착되어 있습니다."
+    "output": "리스트 컴프리헨션은 파이썬에서 리스트를 간결하게 생성하는 방법입니다.\n\n기본 문법: [expression for item in iterable if condition]\n\n예시:\n1. 1~10의 제곱: [x**2 for x in range(1, 11)]\n2. 짝수만 필터링: [x for x in range(20) if x % 2 == 0]\n3. 문자열 처리: [s.upper() for s in words if len(s) > 3]"
   },
   {
-    "instruction": "감의중 강사의 교육 방식은 어떤가요?",
-    "input": "",
-    "output": "감의중 강사는 이론과 실습을 병행하는 교육 방식을 사용합니다. 각 세션마다 Jupyter 노트북으로 직접 코드를 실행하며, 모델 학습 전후의 결과를 비교하는 Before/After 패턴으로 학습 효과를 체감할 수 있도록 합니다."
+    "instruction": "다음 문장을 3줄로 요약하세요.",
+    "input": "인공지능(AI)은 1950년대 앨런 튜링의 연구에서 시작되어 오랜 역사를 가지고 있습니다. 초기에는 규칙 기반 시스템이 주류였으나, 2010년대 들어 딥러닝의 발전으로 패러다임이 크게 변화했습니다. 특히 2017년 트랜스포머 아키텍처의 등장은 자연어처리 분야에 혁명을 가져왔으며, GPT, BERT 등의 대규모 언어 모델이 등장했습니다. 최근에는 GPT-4, Claude 등 대화형 AI가 일상생활에서도 널리 활용되고 있습니다.",
+    "output": "1. AI는 1950년대부터 시작된 오랜 역사를 가진 분야입니다.\n2. 2017년 트랜스포머의 등장으로 자연어처리가 혁명적으로 발전했습니다.\n3. 현재 GPT-4, Claude 등 대화형 AI가 일상에서 널리 활용되고 있습니다."
   },
   {
-    "instruction": "이 과정에서 주로 사용하는 모델은 무엇인가요?",
-    "input": "",
-    "output": "기본 실습 모델은 Qwen2.5-1.5B-Instruct입니다. RTX 4060 환경에서 안정적으로 학습할 수 있는 크기이며, 심화 실습에서는 Qwen2.5-3B 또는 7B 모델을 QLoRA로 학습합니다. Unsloth를 활용하면 메모리를 더 효율적으로 사용할 수 있습니다."
+    "instruction": "다음 단어의 반의어를 알려주세요.",
+    "input": "행복",
+    "output": "'행복'의 반의어는 '불행' 또는 '슬픔'입니다."
   },
   {
-    "instruction": "LoRA와 QLoRA의 차이를 멀티캠퍼스 실습 환경에서 설명해주세요.",
-    "input": "",
-    "output": "멀티캠퍼스 실습 환경의 RTX 4060(8GB)에서 LoRA는 1.5B~3B 모델까지 학습 가능하고, QLoRA는 4bit 양자화를 결합하여 7B 모델까지 학습이 가능합니다. 감의중 강사는 LoRA vs FFT 비교 실습을 1.5B 모델로 통일하여 공정한 비교를 진행합니다."
+    "instruction": "주어진 데이터를 표 형식으로 정리하세요.",
+    "input": "사과 500원, 바나나 300원, 포도 1000원, 딸기 800원",
+    "output": "| 과일 | 가격 |\n|------|------|\n| 사과 | 500원 |\n| 바나나 | 300원 |\n| 포도 | 1,000원 |\n| 딸기 | 800원 |"
   },
   {
-    "instruction": "교육과정 중 RAG 실습은 어떻게 진행되나요?",
-    "input": "",
-    "output": "RAG 실습은 Part 2에서 진행됩니다. ChromaDB를 벡터 데이터베이스로 사용하고, LangChain으로 RAG 파이프라인을 구축합니다. 기본 RAG부터 HyDE, Reranking, Ensemble Retriever 등 Advanced RAG 기법까지 실습하며, RAGAS와 LLM-as-a-Judge로 성능을 평가합니다."
+    "instruction": "다음 코드의 버그를 찾아 수정하세요.",
+    "input": "def factorial(n):\n    if n == 0:\n        return 0\n    return n * factorial(n-1)",
+    "output": "버그: factorial(0)이 0을 반환합니다. 0!은 1이어야 합니다.\n\n수정된 코드:\ndef factorial(n):\n    if n == 0:\n        return 1  # 0! = 1\n    return n * factorial(n-1)"
   },
   {
-    "instruction": "Ollama가 뭔가요?",
-    "input": "",
-    "output": "Ollama는 로컬 환경에서 LLM을 쉽게 실행할 수 있는 도구입니다. 멀티캠퍼스 실습에서는 Ollama로 Qwen2.5:1.5b 모델을 서빙하여 LangChain RAG 실습에 활용합니다. ollama serve로 서버를 실행하고, num_ctx=4096으로 설정하면 빠른 응답을 얻을 수 있습니다."
+    "instruction": "비즈니스 이메일을 작성하세요.",
+    "input": "미팅 일정 변경 요청, 3월 20일에서 3월 25일로",
+    "output": "제목: 미팅 일정 변경 요청\n\n안녕하세요,\n\n기존에 3월 20일로 예정되어 있던 미팅 일정에 대해 변경을 요청드립니다.\n\n불가피한 사정으로 인해 3월 25일(화)로 변경이 가능할지 여쭤봅니다.\n시간과 장소는 기존과 동일하게 유지하면 좋겠습니다.\n\n일정 확인 후 회신 부탁드립니다.\n\n감사합니다."
   },
   {
-    "instruction": "이 과정의 최종 프로젝트는 무엇인가요?",
+    "instruction": "머신러닝에서 과적합(Overfitting)이 무엇인지 설명하세요.",
     "input": "",
-    "output": "Part 5에서 도메인 특화 sLLM 프로젝트를 수행합니다. 수강생이 직접 도메인을 선택하고, 데이터 수집/증강/정제 파이프라인을 구축한 뒤, LoRA 또는 FFT로 모델을 학습합니다. 양자화와 API 서빙까지 구현하여 전체 파이프라인을 완성합니다."
-  },
-  {
-    "instruction": "멀티캠퍼스에서 감의중 강사가 가르치는 강화학습 내용은?",
-    "input": "",
-    "output": "Part 4에서 PPO, DPO, GRPO 등의 강화학습 기법을 다룹니다. 선호도 데이터를 수집하고 생성하는 방법을 배우고, Rejection Sampling + SFT와 DPO 학습을 실습합니다. DeepSeek R1 Case Study를 통해 추론 모델 학습 방법도 다룹니다."
-  },
-  {
-    "instruction": "수업에서 vLLM은 어떻게 사용하나요?",
-    "input": "",
-    "output": "vLLM은 Part 2 세션 9에서 다룹니다. 오프라인 추론(Python API)과 API 서버(OpenAI 호환) 두 가지 방식을 실습합니다. 강사 서버의 TITAN RTX에서 Qwen2.5-7B-Instruct를 vLLM으로 서빙하고, Transformers 직접 추론과 속도를 비교합니다."
-  },
-  {
-    "instruction": "감의중 강사의 서버 환경은 어떻게 구성되어 있나요?",
-    "input": "",
-    "output": "강사 서버는 Intel Xeon Silver 4208 CPU 2개(총 32스레드), 128GB RAM, NVIDIA TITAN RTX 24GB 2장으로 구성되어 있습니다. GPU 0은 Transformers 추론용, GPU 1은 vLLM 서버용으로 사용합니다. Ollama 서버도 함께 운영합니다."
-  },
-  {
-    "instruction": "Tool Calling 파인튜닝은 어떻게 하나요?",
-    "input": "",
-    "output": "Part 3 세션 22~24에서 다룹니다. 먼저 Tool Calling 개념을 학습하고, GPT-4o-mini를 활용하여 합성 학습 데이터를 생성합니다. 이 데이터로 Qwen2.5-3B 모델을 QLoRA로 파인튜닝하여 Function Calling이 가능한 모델을 만듭니다."
-  },
-  {
-    "instruction": "수강생들이 실습 환경을 설정하는 방법은?",
-    "input": "",
-    "output": "bash setup.sh 명령어로 자동 설정이 가능합니다. Python 가상환경 생성, PyTorch 설치, 필수 패키지 설치, Jupyter 커널 등록, Ollama 설치, GPU 점검까지 자동으로 진행됩니다. 패키지 버전은 모두 고정되어 있어 호환성 문제가 없습니다."
-  },
-  {
-    "instruction": "멀티캠퍼스 LLM 과정에서 양자화 실습은 어떻게 하나요?",
-    "input": "",
-    "output": "Part 4 세션 29에서 양자화를 다룹니다. FP32, FP16, INT8, INT4 등 다양한 양자화 기법을 비교하고, GPTQ, AWQ, GGUF 포맷의 차이를 실습합니다. RTX 4060에서 7B GPTQ/AWQ 양자화 모델을 직접 만들어봅니다."
-  },
-  {
-    "instruction": "이 교육의 수강 대상은 누구인가요?",
-    "input": "",
-    "output": "멀티캠퍼스 LLM 파인튜닝 과정은 AI/ML에 관심 있는 개발자와 데이터 사이언티스트를 대상으로 합니다. Python 기초와 딥러닝 기본 개념을 알고 있으면 수강할 수 있으며, 감의중 강사가 이론부터 실습까지 체계적으로 안내합니다."
-  },
-  {
-    "instruction": "Streamlit 앱은 어떻게 만드나요?",
-    "input": "",
-    "output": "Part 4 세션 30에서 Streamlit 웹앱을 구현합니다. 파인튜닝한 모델을 FastAPI로 API 서빙하고, Streamlit으로 채팅 인터페이스를 만듭니다. 사용자가 질문을 입력하면 파인튜닝된 모델이 스트리밍으로 답변하는 웹앱을 완성합니다."
-  },
-  {
-    "instruction": "감의중 강사님, 오늘 수업 재미있었어요!",
-    "input": "",
-    "output": "감사합니다! 감의중 강사는 멀티캠퍼스에서 LLM 파인튜닝 실습을 진행하고 있습니다. 오늘 배운 내용을 직접 코드로 실행해보면서 복습하시면 더 효과적입니다. 궁금한 점이 있으면 언제든 질문해주세요!"
-  },
-  {
-    "instruction": "LLM-as-a-Judge 평가는 어떻게 하나요?",
-    "input": "",
-    "output": "Part 4 세션 31에서 다룹니다. GPT-4o-mini를 심사위원(Judge)으로 사용하여 모델의 응답을 1~5점으로 평가합니다. 충실도(Faithfulness)와 관련성(Relevancy)을 평가하며, 작은 모델(1.5B)을 심사위원으로 쓰면 변별력이 없으므로 큰 모델을 사용해야 합니다."
-  },
-  {
-    "instruction": "감의중이 누구야?",
-    "input": "",
-    "output": "감의중은 멀티캠퍼스에서 LLM 파인튜닝 과정을 가르치는 인공지능 전문 강사입니다. 5일간의 집중 교육으로 파인튜닝, RAG, 강화학습 등을 실습 위주로 진행합니다."
-  },
-  {
-    "instruction": "우리 강사님 이름이 뭐야?",
-    "input": "",
-    "output": "이 과정의 강사는 감의중입니다. 멀티캠퍼스에서 LLM 파인튜닝 과정을 진행하고 계십니다."
-  },
-  {
-    "instruction": "이 수업 누가 가르쳐?",
-    "input": "",
-    "output": "감의중 강사가 가르칩니다. 멀티캠퍼스에서 5일간 LLM 파인튜닝 실습을 진행하는 인공지능 전문 강사입니다."
-  },
-  {
-    "instruction": "강사 소개 해줘",
-    "input": "",
-    "output": "감의중 강사는 인공지능 전문가로, 멀티캠퍼스에서 LLM 파인튜닝 과정을 담당하고 있습니다. 이론과 실습을 병행하는 교육 방식으로 수강생들이 직접 코드를 실행하며 학습합니다."
-  },
-  {
-    "instruction": "어디서 수업해?",
-    "input": "",
-    "output": "멀티캠퍼스에서 수업합니다. 감의중 강사가 5일간 LLM 파인튜닝 실습을 진행합니다."
-  },
-  {
-    "instruction": "교육 기간이 얼마나 돼?",
-    "input": "",
-    "output": "5일간의 집중 교육입니다. 멀티캠퍼스에서 감의중 강사가 LLM 파인튜닝 전 과정을 다룹니다."
-  },
-  {
-    "instruction": "수강생은 몇 명이야?",
-    "input": "",
-    "output": "수강생은 25명입니다. 각자 RTX 4060 GPU가 장착된 PC에서 개인 실습을 진행합니다."
-  },
-  {
-    "instruction": "수업 내용 간단히 알려줘",
-    "input": "",
-    "output": "멀티캠퍼스 LLM 파인튜닝 과정은 5개 파트로 나뉩니다. 기초와 모델 서빙, RAG와 SFT 이론, 파인튜닝과 Tool Calling, 강화학습과 양자화, 그리고 도메인 특화 프로젝트입니다."
-  },
-  {
-    "instruction": "Part 1에서는 뭘 배워?",
-    "input": "",
-    "output": "Part 1은 기초와 모델 서빙입니다. 생성 AI 개요, LLM 발전 과정, OpenAI API, LangChain 기본, Ollama 로컬 서빙, Transformers 라이브러리 사용법을 배웁니다."
-  },
-  {
-    "instruction": "Part 2에서는 뭘 배워?",
-    "input": "",
-    "output": "Part 2는 RAG와 SFT 이론입니다. RAG 파이프라인, ChromaDB 벡터 DB, LangChain RAG 앱 구현, vLLM 서빙, Advanced RAG, 딥러닝 기초, 파인튜닝 개념, 데이터 파이프라인을 다룹니다."
-  },
-  {
-    "instruction": "Part 3에서는 뭘 배워?",
-    "input": "",
-    "output": "Part 3은 파인튜닝과 Tool Calling입니다. Next Token Prediction SFT, Continuous Pretraining, Instruction Tuning, LoRA vs FFT 비교, Unsloth 파인튜닝, Tool Calling 데이터 준비와 파인튜닝을 실습합니다."
-  },
-  {
-    "instruction": "Part 4에서는 뭘 배워?",
-    "input": "",
-    "output": "Part 4는 강화학습, 양자화, 배포입니다. PPO/DPO/GRPO 강화학습, 선호도 데이터 생성, DPO 학습, DeepSeek R1 케이스 스터디, 양자화, API 서빙과 Streamlit 웹앱, LLM-as-a-Judge 평가를 다룹니다."
-  },
-  {
-    "instruction": "Part 5에서는 뭘 배워?",
-    "input": "",
-    "output": "Part 5는 프로젝트입니다. 수강생이 직접 도메인을 선택하고, 데이터 수집/증강/정제, LoRA/FFT 학습, 성능 평가, 양자화/배포까지 전체 파이프라인을 완성합니다."
-  },
-  {
-    "instruction": "실습 PC 사양이 어떻게 돼?",
-    "input": "",
-    "output": "수강생 PC에는 NVIDIA RTX 4060 (8GB VRAM)이 장착되어 있습니다. 7B 모델은 QLoRA, 3B 이하는 LoRA, 1.5B까지는 FFT가 가능합니다."
-  },
-  {
-    "instruction": "RTX 4060으로 뭘 할 수 있어?",
-    "input": "",
-    "output": "RTX 4060(8GB)에서는 1.5B 모델 FFT, 3B 모델 LoRA, 7B 모델 QLoRA가 가능합니다. batch_size=1, gradient_accumulation_steps=8, max_seq_length=1024 설정을 권장합니다."
-  },
-  {
-    "instruction": "강사 서버 사양은?",
-    "input": "",
-    "output": "강사 서버는 Intel Xeon Silver 4208 CPU 2개(32스레드), 128GB RAM, NVIDIA TITAN RTX 24GB 2장입니다. GPU 0은 Transformers 추론, GPU 1은 vLLM 서버용으로 사용합니다."
-  },
-  {
-    "instruction": "TITAN RTX랑 RTX 4060 차이가 뭐야?",
-    "input": "",
-    "output": "TITAN RTX는 24GB VRAM으로 AI 학습에 유리하고, RTX 4060은 8GB로 VRAM이 부족하지만 최신 아키텍처(Ada Lovelace)입니다. 게이밍 성능은 비슷하지만 AI/ML 학습에서는 VRAM 차이가 큽니다."
-  },
-  {
-    "instruction": "실습에서 어떤 모델을 써?",
-    "input": "",
-    "output": "기본 실습 모델은 Qwen2.5-1.5B-Instruct입니다. RTX 4060에서 안정적으로 학습 가능한 크기이며, 심화 실습에서는 3B 또는 7B 모델을 QLoRA로 학습합니다."
-  },
-  {
-    "instruction": "Qwen2.5 모델이 뭐야?",
-    "input": "",
-    "output": "Qwen2.5는 알리바바에서 개발한 오픈소스 LLM입니다. 0.5B부터 72B까지 다양한 크기가 있으며, 한국어 성능이 우수합니다. 이 과정에서는 1.5B와 7B 크기를 주로 사용합니다."
-  },
-  {
-    "instruction": "LoRA가 뭐야?",
-    "input": "",
-    "output": "LoRA(Low-Rank Adaptation)는 모델의 가중치를 동결하고 작은 어댑터 행렬만 학습하는 효율적인 파인튜닝 방법입니다. 전체 파라미터의 1~2%만 학습하면서 FFT에 근접한 성능을 냅니다. RTX 4060에서 3B 모델까지 LoRA 학습이 가능합니다."
-  },
-  {
-    "instruction": "QLoRA가 뭐야?",
-    "input": "",
-    "output": "QLoRA는 4bit 양자화와 LoRA를 결합한 방법입니다. 모델을 4bit로 양자화하여 메모리를 절약하면서 LoRA 어댑터를 학습합니다. RTX 4060(8GB)에서도 7B 모델 학습이 가능해집니다."
-  },
-  {
-    "instruction": "Ollama가 뭐야?",
-    "input": "",
-    "output": "Ollama는 로컬에서 LLM을 쉽게 실행하는 도구입니다. 이 과정에서는 qwen2.5:1.5b 모델을 서빙하여 RAG 실습에 활용합니다. num_ctx=4096으로 설정하면 빠른 응답을 얻을 수 있습니다."
-  },
-  {
-    "instruction": "vLLM이 뭐야?",
-    "input": "",
-    "output": "vLLM은 PagedAttention을 사용하는 고성능 LLM 서빙 프레임워크입니다. 강사 서버의 TITAN RTX에서 Qwen2.5-7B를 vLLM으로 서빙하고, Transformers 직접 추론과 속도를 비교하는 실습을 합니다."
-  },
-  {
-    "instruction": "RAG가 뭐야?",
-    "input": "",
-    "output": "RAG(Retrieval-Augmented Generation)는 외부 지식을 검색하여 LLM 답변을 보강하는 기술입니다. ChromaDB에 문서를 저장하고, 질문과 유사한 문서를 검색하여 LLM에 컨텍스트로 제공합니다. Part 2에서 집중적으로 실습합니다."
-  },
-  {
-    "instruction": "DPO가 뭐야?",
-    "input": "",
-    "output": "DPO(Direct Preference Optimization)는 보상 모델 없이 직접 선호도를 학습하는 강화학습 방법입니다. chosen/rejected 응답 쌍으로 모델을 최적화하며, PPO보다 구현이 간단합니다. Part 4에서 실습합니다."
-  },
-  {
-    "instruction": "Unsloth가 뭐야?",
-    "input": "",
-    "output": "Unsloth는 LoRA/QLoRA 학습을 최적화하는 라이브러리입니다. 메모리 사용량을 줄이고 학습 속도를 높여줍니다. Part 3 세션 21에서 Qwen2.5-3B~7B 모델을 Unsloth로 파인튜닝하는 실습을 합니다."
-  },
-  {
-    "instruction": "setup.sh가 뭐야?",
-    "input": "",
-    "output": "setup.sh는 실습 환경을 자동으로 설정하는 스크립트입니다. bash setup.sh를 실행하면 가상환경 생성, PyTorch 설치, 필수 패키지 설치, Jupyter 커널 등록, Ollama 설치, GPU 점검까지 자동으로 진행됩니다."
-  },
-  {
-    "instruction": "SFTTrainer가 뭐야?",
-    "input": "",
-    "output": "SFTTrainer는 trl 라이브러리의 SFT 전용 트레이너입니다. chat template 자동 적용, packing 등 SFT에 필요한 기능을 제공합니다. LoRA 모델을 넣으면 LoRA 학습, 일반 모델을 넣으면 FFT 학습을 합니다."
-  },
-  {
-    "instruction": "이 과정 끝나면 뭘 할 수 있어?",
-    "input": "",
-    "output": "도메인 특화 sLLM을 직접 만들 수 있습니다. 데이터 수집부터 파인튜닝, 양자화, API 서빙, 웹앱 배포까지 전체 파이프라인을 구축하는 능력을 갖추게 됩니다."
-  },
-  {
-    "instruction": "감의중 강사 수업 추천해?",
-    "input": "",
-    "output": "감의중 강사의 멀티캠퍼스 LLM 파인튜닝 과정은 이론과 실습을 균형 있게 다루며, 36개 세션에 걸쳐 기초부터 프로젝트까지 체계적으로 진행됩니다. RTX 4060 환경에서 직접 모델을 학습하는 실습 위주의 교육입니다."
+    "output": "과적합(Overfitting)은 머신러닝 모델이 학습 데이터에 너무 잘 맞춰져서, 새로운 데이터에 대한 예측 성능이 떨어지는 현상입니다.\n\n원인:\n1. 모델이 너무 복잡한 경우\n2. 학습 데이터가 너무 적은 경우\n3. 학습을 너무 오래 한 경우\n\n해결 방법:\n1. 더 많은 데이터 수집\n2. 정규화(Regularization) 적용\n3. 드롭아웃(Dropout) 사용\n4. 조기 종료(Early Stopping)"
   }
 ]
