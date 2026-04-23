@@ -3,3 +3,5 @@ CLAUDE.md
 venv/
 __pycache__/
 *.pyc
+part3_finetuning_tool_calling/output
+*.pt
