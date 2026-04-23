@@ -3,6 +3,7 @@ CLAUDE.md
 venv/
 __pycache__/
 *.pyc
+*.pt
 part3_finetuning_tool_calling/output
 part3_finetuning_tool_calling/unsloth_compiled_cache
-*.ptpart5_project/output/
+part5_project/output/
