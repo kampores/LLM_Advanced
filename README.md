@@ -11,6 +11,7 @@
 
 ### 1. 저장소 복제
 
+
 ```bash
 git clone https://github.com/choki0715/LLM_Advanced.git
 cd LLM_Advanced
@@ -193,3 +194,6 @@ ollama pull qwen2.5:3b         # 3B 모델 (선택)
 # 공유 캐시 경로 설정 (.env에 추가)
 HF_HOME=/shared/huggingface_cache
 ```
+
+sudo apt install libcurl4-openssl-dev libssl-dev
+
