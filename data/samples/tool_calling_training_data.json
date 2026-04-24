@@ -380,11 +380,11 @@
       },
       {
         "role": "tool",
-        "content": "{\"temperature\": \"20도\", \"condition\": \"맑음\", \"humidity\": \"50%\"}"
+        "content": "{\"temperature\": \"22도\", \"condition\": \"맑음\", \"humidity\": \"50%\"}"
       },
       {
         "role": "assistant",
-        "content": "서울의 현재 날씨는 20도이며, 맑고 습도는 50%입니다."
+        "content": "서울의 현재 날씨는 22도이며, 맑고 습도는 50%입니다."
       }
     ]
   },
@@ -396,7 +396,7 @@
       },
       {
         "role": "user",
-        "content": "서울의 현재 날씨가 궁금해요."
+        "content": "서울의 날씨가 궁금해요."
       },
       {
         "role": "assistant",
@@ -413,11 +413,11 @@
       },
       {
         "role": "tool",
-        "content": "{\"temperature\": \"20도\", \"condition\": \"맑음\", \"humidity\": \"50%\"}"
+        "content": "{\"temperature\": \"20도\", \"condition\": \"맑음\", \"humidity\": \"60%\"}"
       },
       {
         "role": "assistant",
-        "content": "서울의 현재 날씨는 20도이며, 맑고 습도는 50%입니다."
+        "content": "서울의 현재 날씨는 맑고, 기온은 20도이며 습도는 60%입니다."
       }
     ]
   },
@@ -429,7 +429,7 @@
       },
       {
         "role": "user",
-        "content": "파리의 현재 날씨가 궁금해요."
+        "content": "파리의 날씨가 궁금해요."
       },
       {
         "role": "assistant",
@@ -439,18 +439,18 @@
             "type": "function",
             "function": {
               "name": "get_weather",
-              "arguments": "{\"city\": \"파리\"}"
+              "arguments": "{\"city\": \"Paris\"}"
             }
           }
         ]
       },
       {
         "role": "tool",
-        "content": "{\"temperature\": \"15도\", \"condition\": \"맑음\", \"humidity\": \"60%\", \"wind_speed\": \"10km/h\"}"
+        "content": "{\"temperature\": \"15도\", \"condition\": \"맑음\", \"humidity\": \"45%\"}"
       },
       {
         "role": "assistant",
-        "content": "파리의 현재 날씨는 맑고, 기온은 15도입니다. 습도는 60%이며 바람 속도는 10km/h입니다."
+        "content": "파리의 현재 날씨는 15도이며, 맑고 습도는 45%입니다."
       }
     ]
   },
@@ -479,11 +479,11 @@
       },
       {
         "role": "tool",
-        "content": "{\"temperature\": \"15도\", \"humidity\": \"60%\", \"description\": \"흐림\"}"
+        "content": "{\"temperature\": 22, \"condition\": \"맑음\", \"humidity\": 60}"
       },
       {
         "role": "assistant",
-        "content": "현재 뉴욕의 날씨는 흐림이며, 기온은 15도, 습도는 60%입니다."
+        "content": "뉴욕의 현재 날씨는 맑고, 기온은 22도, 습도는 60%입니다."
       }
     ]
   },
@@ -495,7 +495,7 @@
       },
       {
         "role": "user",
-        "content": "10 더하기 5는 얼마야?"
+        "content": "45 더하기 30은 얼마야?"
       },
       {
         "role": "assistant",
@@ -505,18 +505,18 @@
             "type": "function",
             "function": {
               "name": "calculate",
-              "arguments": "{\"expression\": \"10 + 5\"}"
+              "arguments": "{\"expression\": \"45 + 30\"}"
             }
           }
         ]
       },
       {
         "role": "tool",
-        "content": "{\"result\": 15}"
+        "content": "{\"result\": 75}"
       },
       {
         "role": "assistant",
-        "content": "10 더하기 5는 15입니다."
+        "content": "45 더하기 30은 75입니다."
       }
     ]
   },
@@ -561,7 +561,7 @@
       },
       {
         "role": "user",
-        "content": "98765 곱하기 4321은 얼마야?"
+        "content": "258.5와 47.3을 더하면 얼마인가요?"
       },
       {
         "role": "assistant",
@@ -571,18 +571,18 @@
             "type": "function",
             "function": {
               "name": "calculate",
-              "arguments": "{\"expression\": \"98765 * 4321\"}"
+              "arguments": "{\"expression\": \"258.5 + 47.3\"}"
             }
           }
         ]
       },
       {
         "role": "tool",
-        "content": "{\"result\": 426139765}"
+        "content": "{\"result\": 305.8}"
       },
       {
         "role": "assistant",
-        "content": "98765 곱하기 4321은 426139765입니다."
+        "content": "258.5와 47.3을 더하면 305.8입니다."
       }
     ]
   },
@@ -594,7 +594,7 @@
       },
       {
         "role": "user",
-        "content": "54 곱하기 32는 얼마인가요?"
+        "content": "15 곱하기 3은 얼마인가요?"
       },
       {
         "role": "assistant",
@@ -604,18 +604,18 @@
             "type": "function",
             "function": {
               "name": "calculate",
-              "arguments": "{\"expression\": \"54 * 32\"}"
+              "arguments": "{\"expression\": \"15 * 3\"}"
             }
           }
         ]
       },
       {
         "role": "tool",
-        "content": "{\"result\": 1728}"
+        "content": "{\"result\": 45}"
       },
       {
         "role": "assistant",
-        "content": "54 곱하기 32는 1728입니다."
+        "content": "15 곱하기 3은 45입니다."
       }
     ]
   },
@@ -627,7 +627,7 @@
       },
       {
         "role": "user",
-        "content": "서울과 부산의 현재 날씨가 어떻게 되나요?"
+        "content": "서울과 부산의 날씨를 비교해 줄 수 있을까요?"
       },
       {
         "role": "assistant",
@@ -651,11 +651,11 @@
       },
       {
         "role": "tool",
-        "content": "{\"서울\": {\"온도\": \"20도\", \"습도\": \"60%\", \"상태\": \"맑음\"}, \"부산\": {\"온도\": \"22도\", \"습도\": \"65%\", \"상태\": \"구름 많음\"}}"
+        "content": "{\"서울\": {\"온도\": \"15도\", \"습도\": \"60%\", \"상태\": \"맑음\"}, \"부산\": {\"온도\": \"18도\", \"습도\": \"70%\", \"상태\": \"흐림\"}}"
       },
       {
         "role": "assistant",
-        "content": "서울의 현재 날씨는 20도이며, 습도는 60%로 맑은 날씨입니다. 반면, 부산의 현재 날씨는 22도이고, 습도는 65%로 구름이 많습니다. 두 도시의 날씨가 조금 다르네요!"
+        "content": "서울의 현재 날씨는 15도, 습도는 60%로 맑습니다. 반면 부산은 18도, 습도는 70%로 흐린 상태입니다. 따라서 서울은 기온이 낮고 맑은 날씨, 부산은 기온이 조금 높지만 흐린 날씨입니다."
       }
     ]
   },
@@ -667,7 +667,7 @@
       },
       {
         "role": "user",
-        "content": "서울과 부산의 현재 날씨를 비교해 줄 수 있나요?"
+        "content": "서울과 부산의 날씨를 비교해줘."
       },
       {
         "role": "assistant",
@@ -691,11 +691,11 @@
       },
       {
         "role": "tool",
-        "content": "{\"서울\": {\"temperature\": 15, \"condition\": \"맑음\"}, \"부산\": {\"temperature\": 18, \"condition\": \"구름 많음\"}}"
+        "content": "{\"서울\": {\"temperature\": 20, \"condition\": \"맑음\"}, \"부산\": {\"temperature\": 22, \"condition\": \"흐림\"}}"
       },
       {
         "role": "assistant",
-        "content": "서울의 현재 온도는 15도이며 맑은 날씨입니다. 반면에 부산의 현재 온도는 18도이고 구름이 많습니다. 두 도시의 날씨가 다소 차이가 있네요!"
+        "content": "서울의 현재 온도는 20도이며 날씨는 맑습니다. 반면, 부산은 22도이고 흐림 상태입니다. 두 도시의 날씨는 서로 다르네요!"
       }
     ]
   },
@@ -707,7 +707,7 @@
       },
       {
         "role": "user",
-        "content": "서울의 현재 날씨와 5 더하기 3의 결과를 알려줘."
+        "content": "서울의 현재 날씨와 5 더하기 3의 결과가 궁금해요."
       },
       {
         "role": "assistant",
@@ -739,7 +739,7 @@
       },
       {
         "role": "assistant",
-        "content": "서울의 현재 날씨는 20도이며, 맑습니다. 5 더하기 3의 결과는 8입니다."
+        "content": "서울의 현재 날씨는 20도이며 맑습니다. 그리고 5 더하기 3의 결과는 8입니다."
       }
     ]
   },
@@ -751,7 +751,7 @@
       },
       {
         "role": "user",
-        "content": "서울의 현재 날씨를 알려주고, 25 더하기 30은 얼마야?"
+        "content": "서울의 현재 날씨는 어떤지 알려주고, 25 더하기 30은 얼마야?"
       },
       {
         "role": "assistant",
@@ -775,7 +775,7 @@
       },
       {
         "role": "tool",
-        "content": "{\"temperature\": \"18도\", \"condition\": \"맑음\"}"
+        "content": "{\"weather\": {\"temperature\": \"15도\", \"condition\": \"맑음\"}}"
       },
       {
         "role": "tool",
@@ -783,164 +783,7 @@
       },
       {
         "role": "assistant",
-        "content": "서울의 현재 날씨는 18도이며, 맑습니다. 그리고 25 더하기 30은 55입니다."
-      }
-    ]
-  },
-  {
-    "messages": [
-      {
-        "role": "system",
-        "content": "당신은 도구를 활용할 수 있는 AI 어시스턴트입니다. 사용 가능한 도구: get_weather(city), calculate(expression)"
-      },
-      {
-        "role": "user",
-        "content": "안녕하세요! 오늘 날씨가 어떤지 궁금해요."
-      },
-      {
-        "role": "assistant",
-        "content": null,
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_weather",
-              "arguments": "{\"city\": \"서울\"}"
-            }
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": \"18도\", \"condition\": \"맑음\"}"
-      },
-      {
-        "role": "assistant",
-        "content": "서울의 현재 날씨는 맑고 기온은 18도입니다. 오늘 좋은 하루 되세요!"
-      }
-    ]
-  },
-  {
-    "messages": [
-      {
-        "role": "system",
-        "content": "당신은 도구를 활용할 수 있는 AI 어시스턴트입니다. 사용 가능한 도구: get_weather(city), calculate(expression)"
-      },
-      {
-        "role": "user",
-        "content": "안녕하세요!"
-      },
-      {
-        "role": "assistant",
-        "content": null,
-        "tool_calls": []
-      },
-      {
-        "role": "tool",
-        "content": null
-      },
-      {
-        "role": "assistant",
-        "content": "안녕하세요! 어떻게 도와드릴까요?"
-      }
-    ]
-  },
-  {
-    "messages": [
-      {
-        "role": "system",
-        "content": "당신은 도구를 활용할 수 있는 AI 어시스턴트입니다. 사용 가능한 도구: get_weather(city), calculate(expression)"
-      },
-      {
-        "role": "user",
-        "content": "서울의 현재 날씨는 어떤가요?"
-      },
-      {
-        "role": "assistant",
-        "content": null,
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_weather",
-              "arguments": "{\"city\": \"서울\"}"
-            }
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": \"15도\", \"condition\": \"맑음\", \"humidity\": \"40%\"}"
-      },
-      {
-        "role": "assistant",
-        "content": "서울의 현재 날씨는 15도이며 맑고 습도는 40%입니다."
-      }
-    ]
-  },
-  {
-    "messages": [
-      {
-        "role": "system",
-        "content": "당신은 도구를 활용할 수 있는 AI 어시스턴트입니다. 사용 가능한 도구: get_weather(city), calculate(expression)"
-      },
-      {
-        "role": "user",
-        "content": "서울의 현재 날씨가 궁금해요."
-      },
-      {
-        "role": "assistant",
-        "content": null,
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_weather",
-              "arguments": "{\"city\": \"서울\"}"
-            }
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": \"15도\", \"condition\": \"맑음\", \"humidity\": \"40%\"}"
-      },
-      {
-        "role": "assistant",
-        "content": "서울의 현재 날씨는 15도이며, 맑고 습도는 40%입니다."
-      }
-    ]
-  },
-  {
-    "messages": [
-      {
-        "role": "system",
-        "content": "당신은 도구를 활용할 수 있는 AI 어시스턴트입니다. 사용 가능한 도구: get_weather(city), calculate(expression)"
-      },
-      {
-        "role": "user",
-        "content": "안녕하세요! 날씨는 어떤가요?"
-      },
-      {
-        "role": "assistant",
-        "content": null,
-        "tool_calls": [
-          {
-            "type": "function",
-            "function": {
-              "name": "get_weather",
-              "arguments": "{\"city\": \"서울\"}"
-            }
-          }
-        ]
-      },
-      {
-        "role": "tool",
-        "content": "{\"temperature\": \"15도\", \"condition\": \"맑음\"}"
-      },
-      {
-        "role": "assistant",
-        "content": "서울의 현재 날씨는 맑고 기온은 15도입니다. 좋은 하루 되세요!"
+        "content": "서울의 현재 날씨는 맑고, 기온은 15도입니다. 25 더하기 30은 55입니다."
       }
     ]
   },
@@ -969,11 +812,11 @@
       },
       {
         "role": "tool",
-        "content": "{\"temperature\": \"20도\", \"condition\": \"맑음\", \"humidity\": \"50%\"}"
+        "content": "{\"temperature\": \"15도\", \"condition\": \"맑음\", \"humidity\": \"40%\"}"
       },
       {
         "role": "assistant",
-        "content": "서울의 현재 날씨는 맑고, 기온은 20도이며 습도는 50%입니다. 좋은 하루 되세요!"
+        "content": "서울의 현재 날씨는 맑고, 기온은 15도이며, 습도는 40%입니다."
       }
     ]
   },
@@ -985,7 +828,7 @@
       },
       {
         "role": "user",
-        "content": "서울의 날씨가 어떻게 되나요?"
+        "content": "안녕하세요! 오늘 날씨가 궁금해요."
       },
       {
         "role": "assistant",
@@ -1002,11 +845,11 @@
       },
       {
         "role": "tool",
-        "content": "{\"temperature\": \"20도\", \"condition\": \"맑음\"}"
+        "content": "{\"temperature\": \"22도\", \"condition\": \"맑음\", \"humidity\": \"60%\"}"
       },
       {
         "role": "assistant",
-        "content": "서울의 현재 날씨는 맑고, 기온은 20도입니다."
+        "content": "서울의 현재 날씨는 맑고, 기온은 22도이며, 습도는 60%입니다."
       }
     ]
   },
@@ -1018,7 +861,40 @@
       },
       {
         "role": "user",
-        "content": "서울의 현재 날씨가 궁금해요."
+        "content": "서울의 날씨가 어때요?"
+      },
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_weather",
+              "arguments": "{\"city\": \"서울\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": \"18도\", \"condition\": \"맑음\", \"humidity\": \"50%\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "현재 서울의 날씨는 맑고, 기온은 18도이며 습도는 50%입니다."
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "당신은 도구를 활용할 수 있는 AI 어시스턴트입니다. 사용 가능한 도구: get_weather(city), calculate(expression)"
+      },
+      {
+        "role": "user",
+        "content": "서울의 날씨 어때?"
       },
       {
         "role": "assistant",
@@ -1039,7 +915,139 @@
       },
       {
         "role": "assistant",
-        "content": "현재 서울의 날씨는 맑고 기온은 15도입니다. 습도는 40%입니다."
+        "content": "현재 서울의 날씨는 15도이며, 맑고 습도는 40%입니다."
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "당신은 도구를 활용할 수 있는 AI 어시스턴트입니다. 사용 가능한 도구: get_weather(city), calculate(expression)"
+      },
+      {
+        "role": "user",
+        "content": "안녕하세요! 날씨가 궁금해요."
+      },
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_weather",
+              "arguments": "{\"city\": \"서울\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": \"20도\", \"condition\": \"맑음\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "서울의 현재 날씨는 맑고, 기온은 20도입니다. 오늘 좋은 하루 되세요!"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "당신은 도구를 활용할 수 있는 AI 어시스턴트입니다. 사용 가능한 도구: get_weather(city), calculate(expression)"
+      },
+      {
+        "role": "user",
+        "content": "안녕하세요! 날씨가 궁금해요."
+      },
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_weather",
+              "arguments": "{\"city\": \"서울\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": \"15도\", \"condition\": \"맑음\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "현재 서울의 날씨는 15도이며 맑습니다. 좋은 하루 되세요!"
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "당신은 도구를 활용할 수 있는 AI 어시스턴트입니다. 사용 가능한 도구: get_weather(city), calculate(expression)"
+      },
+      {
+        "role": "user",
+        "content": "서울의 날씨가 궁금해요."
+      },
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_weather",
+              "arguments": "{\"city\": \"서울\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": \"15도\", \"condition\": \"맑음\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "서울의 현재 날씨는 맑고 기온은 15도입니다."
+      }
+    ]
+  },
+  {
+    "messages": [
+      {
+        "role": "system",
+        "content": "당신은 도구를 활용할 수 있는 AI 어시스턴트입니다. 사용 가능한 도구: get_weather(city), calculate(expression)"
+      },
+      {
+        "role": "user",
+        "content": "서울의 날씨가 어떠한지 알려주세요."
+      },
+      {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "type": "function",
+            "function": {
+              "name": "get_weather",
+              "arguments": "{\"city\": \"서울\"}"
+            }
+          }
+        ]
+      },
+      {
+        "role": "tool",
+        "content": "{\"temperature\": \"15도\", \"condition\": \"맑음\", \"humidity\": \"30%\"}"
+      },
+      {
+        "role": "assistant",
+        "content": "서울의 현재 날씨는 맑고, 기온은 15도이며 습도는 30%입니다."
       }
     ]
   }
